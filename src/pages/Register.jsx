@@ -8,8 +8,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, useNavigate } from "react-router-dom";
+import Layout from "./Layout";
 
 function Copyright(props) {
   return (
@@ -23,8 +23,6 @@ function Copyright(props) {
     </Typography>
   );
 }
-
-const defaultTheme = createTheme();
 
 const Register = () => {
   const navigate = useNavigate();
@@ -69,11 +67,17 @@ const Register = () => {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <Layout>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
-          <Avatar sx={{ m: 1, bgcolor: '#1976d2' }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "#1976d2" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -82,21 +86,54 @@ const Register = () => {
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField required fullWidth id="fullname" label="Full Name" name="fullname" value={inputs.fullname} onChange={handleChange} autoComplete="fullname"/>
+                <TextField
+                  required
+                  fullWidth
+                  id="fullname"
+                  label="Full Name"
+                  name="fullname"
+                  value={inputs.fullname}
+                  onChange={handleChange}
+                  autoComplete="fullname"
+                />
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth id="username" label="Username" name="username" value={inputs.username} onChange={handleChange} autoComplete="username"/>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  value={inputs.username}
+                  onChange={handleChange}
+                  autoComplete="username"
+                />
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth name="password" label="Password" type="password" id="password" value={inputs.password} onChange={handleChange} autoComplete="new-password"/>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  value={inputs.password}
+                  onChange={handleChange}
+                  autoComplete="new-password"
+                />
               </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
               Register
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                  Already have an account? &nbsp;
+                Already have an account? &nbsp;
                 <Link to="/login" variant="body2">
                   Login
                 </Link>
@@ -106,7 +143,7 @@ const Register = () => {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-    </ThemeProvider>
+    </Layout>
   );
 }
 
